@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity >=0.8.0;
+
+// объявляем контракт
+contract TradingPlatform {
+    // структура с даннымии об имуществе
+    struct Property {
+        uint property_id;
+        address p_owner;
+        string p_type;
+        bool status;
+        uint year;
+        string gos_num;
+    }
+
+    // хз че эта
+    Property[] properties;
+
+    // добавляем три объекта имущества
+    constructor() {
+        properties.push(Property(0, msg.sender, "car", false, 2020, "123GDE"));
+        properties.push(Property(1, msg.sender, "plane", false, 2022, "456VPI"));
+        properties.push(Property(2, msg.sender, "yacht", false, 2023, "789ZDE"));
+    }
+
+    // получить кол-во имущества
+    function get_prop_number() public view returns(uint) {
+        return properties.length;
+    }
+
+    // получить данные об имущесвте по айди
+    function get_properties(uint p_num) public view returns(uint, address, string memory, bool, uint, string memory) {
+        return(properties[p_num].property_id, properties[p_num].p_owner, properties[p_num].p_type, properties[p_num].status, properties[p_num].year, properties[p_num].gos_num);
+    }
+
+    // добавить имущество
+    function create_property(address p_owner, string memory p_type, uint year, string memory gos_num) public {
+        properties.push(Property(properties.length, p_owner, p_type, false, year, gos_num));
+    }
+}

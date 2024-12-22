@@ -1,0 +1,10 @@
+0xf0BEF8734Cb8446d8BEdB4Fa6E74a07d7879cdFa
+0xd310F7b44C59A9579617B4EB64A02AebAb15033B
+
+password: f
+
+commands:
+geth account new --datadir data создание акка
+geth init --datadir data genesis.json инициализацтя генезиса
+geth --datadir data --networkid 2212 --unlock 0xf0BEF8734Cb8446d8BEdB4Fa6E74a07d7879cdFa -allow-insecure-unlock --http --http.corsdomain="*" --http.api web3,eth,debug,personal,net,miner --miner.etherbase 0xf0BEF8734Cb8446d8BEdB4Fa6E74a07d7879cdFa
+geth attach --datadir data ipc:\\.\pipe\geth.ipc
